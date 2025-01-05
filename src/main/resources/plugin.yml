@@ -1,0 +1,19 @@
+name: ExplosiveArrow
+version: '${project.version}'
+main: io.github.kittheuh.earrow.ExplosiveMain
+api-version: '1.21'
+folia-supported: true
+
+commands:
+  explosive:
+    description: "Explosive arrow plugin command"
+    usage: "/explosive"
+
+permissions:
+  explosive.reload:
+    description: "Explosive Arrow plugin reload capabilities"
+    default: op
+
+  explosive.give-arrows:
+    description: "Ability to give command executor or any player the explosive arrows"
+    default: op

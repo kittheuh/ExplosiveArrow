@@ -1,0 +1,73 @@
+# Explosive Arrow v${project.version}
+# By kittheuh
+
+
+explosion:
+
+  # How much power should the explosion have. Setting this to below 0 will disable the explosion.
+  # For reference, a TNT is equivalent to 4. Default is 2
+  power: 2.0
+
+  # Should the final explosion power depend on how much the bow was charged before firing?
+  # Default is true, scaling is skipped if fired from a block.
+  scale-with-force: true
+
+  # Control fire behavior, default is 'flame'.
+  # Allowed values:
+  # 'always' - Explosions will always cause fire.
+  # 'flame' - Fire will only occur if the arrow was on fire (eg: Flame enchant or going thru lava)
+  # 'never' - Explosions will never cause fire.
+  # Invalid values will be treated as the default.
+  set-fire: 'flame'
+
+  # Whether the explosion should cause block damage. Default is false.
+  destroy-blocks: false
+
+  # Whether to create the explosion right at the hit target or where the arrow was.
+  # For example, if it hit an entity, it will spawn the explosion at the entity's current location instead of where the arrow was when hitting.
+  create-at-target: true
+
+# By default, the arrow is removed after exploding. Set this to true to disable removing and allow pickup.
+# Note, the arrow can't be picked up if it hits an entity.
+persist-after-explosion: false
+
+
+
+firing:
+  penalty:
+    # Additional durability to use up on the item used to fire the explosive arrow. This does not apply if this was fired from a block.
+    # Default is 2, set to 0 to disable.
+    amount: 2
+
+    # Whether the penalty should apply to creative players. Default is true. Set to false to apply the durability use on them.
+    # Not sure why you'd turn this off.
+    ignore-creative: true
+
+
+  # Allow explosive arrows being fired from dispensers.
+  # Note, if the block in front of the dispenser can't be walked through, the dispenser will not fire.
+  allow-dispenser: false
+
+  # Allow loading explosive arrows onto Multishot enchanted items.
+  allow-multishot: false
+
+
+# If Multishot isn't allowed, should the arrow include a tooltip saying so?
+# Note, this will not retroactively update existing arrows.
+show-multishot-warn: true
+
+# If disabled, the damage the arrow would have caused is nullified and the only damage caused would be by the resulting explosion.
+# Default is true, which causes damage from both the arrow landing and the explosion.
+allow-damage-stacking: true
+
+
+
+
+
+
+
+
+
+
+
+
