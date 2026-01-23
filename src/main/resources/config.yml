@@ -1,9 +1,7 @@
 # Explosive Arrow v${project.version}
 # By kittheuh
 
-
 explosion:
-
   # How much power should the explosion have. Setting this to below 0 will disable the explosion.
   # For reference, a TNT is equivalent to 4. Default is 2
   power: 2.0
@@ -31,8 +29,6 @@ explosion:
 # Note, the arrow can't be picked up if it hits an entity.
 persist-after-explosion: false
 
-
-
 firing:
   penalty:
     # Additional durability to use up on the item used to fire the explosive arrow. This does not apply if this was fired from a block.
@@ -59,15 +55,3 @@ show-multishot-warn: true
 # If disabled, the damage the arrow would have caused is nullified and the only damage caused would be by the resulting explosion.
 # Default is true, which causes damage from both the arrow landing and the explosion.
 allow-damage-stacking: true
-
-
-
-
-
-
-
-
-
-
-
-
