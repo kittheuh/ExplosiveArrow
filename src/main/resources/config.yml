@@ -55,3 +55,9 @@ show-multishot-warn: true
 # If disabled, the damage the arrow would have caused is nullified and the only damage caused would be by the resulting explosion.
 # Default is true, which causes damage from both the arrow landing and the explosion.
 allow-damage-stacking: true
+
+# Toggle allowing the item to be crafted
+enable-recipe: true
+
+# Display the arrow text without italics
+no-italics: false

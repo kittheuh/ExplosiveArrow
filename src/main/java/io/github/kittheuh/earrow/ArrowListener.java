@@ -2,10 +2,7 @@ package io.github.kittheuh.earrow;
 
 import com.destroystokyo.paper.event.player.PlayerReadyArrowEvent;
 import io.papermc.paper.event.block.BlockPreDispenseEvent;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Dispenser;
@@ -34,17 +31,31 @@ public class ArrowListener implements Listener {
         arrowRecipeKey = new NamespacedKey(plugin, "expl_arrow_recipe");
         recentFires = plugin.checkFolia() ? Collections.synchronizedList(new ArrayList<>()) : new ArrayList<>();
 
-        ShapedRecipe recipe = new ShapedRecipe(arrowRecipeKey, plugin.createExplosiveArrow())
-                .shape("IGI",
-                        "IAI",
-                        "IBI"
-                ).setIngredient('I', Material.IRON_NUGGET)
-                .setIngredient('G', Material.GUNPOWDER)
-                .setIngredient('A', Material.ARROW)
-                .setIngredient('B', Material.BLAZE_POWDER);
+        initRecipe();
+    }
 
-        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        plugin.getServer().addRecipe(recipe);
+    public void initRecipe() {
+        Server server = plugin.getServer();
+        if (plugin.getConfig().getBoolean("enable-recipe", true)) {
+            if (server.getRecipe(arrowRecipeKey) != null) return;
+
+            ShapedRecipe recipe = new ShapedRecipe(arrowRecipeKey, plugin.createExplosiveArrow())
+                    .shape("IGI",
+                            "IAI",
+                            "IBI"
+                    ).setIngredient('I', Material.IRON_NUGGET)
+                    .setIngredient('G', Material.GUNPOWDER)
+                    .setIngredient('A', Material.ARROW)
+                    .setIngredient('B', Material.BLAZE_POWDER);
+
+            recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+            server.addRecipe(recipe);
+        } else {
+            // remove if present
+            if (server.getRecipe(arrowRecipeKey) != null) server.removeRecipe(arrowRecipeKey);
+        }
+
+        server.updateRecipes();
     }
 
 
