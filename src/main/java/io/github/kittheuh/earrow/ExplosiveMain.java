@@ -34,6 +34,7 @@ public final class ExplosiveMain extends JavaPlugin {
     @Override
     public void onEnable() {
         arrowListener = new ArrowListener(this);
+        arrowListener.initRecipe();
         getServer().getPluginManager().registerEvents(arrowListener, this);
         Objects.requireNonNull(getCommand("explosive")).setExecutor(new ExplosiveCommand(this));
     }
@@ -99,6 +100,6 @@ public final class ExplosiveMain extends JavaPlugin {
     @Override
     public void reloadConfig() {
         super.reloadConfig();
-        arrowListener.initRecipe();
+        if (arrowListener != null) arrowListener.initRecipe();
     }
 }
